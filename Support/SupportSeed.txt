@@ -1,0 +1,28 @@
+■SeedFileを実行する
+rails r [Seed File Path]
+rails db:seed
+
+※以下使用例
+db/seeds
+└── user.rb
+bundle exec rails r db/seeds/user.rb
+
+
+■Seed File の書き方
+
+# 基本
+User.create!(
+	email: 'test@test.com',
+	name: 'テスト太郎',
+	image: File.open('./app/assets/images/test.jpg')
+)
+
+
+# 反復
+5.times do |n|
+	User.create!(
+		email: "test#{n + 1}@test.com",
+		name: "テスト太郎#{n + 1}",
+		image: File.open('./app/assets/images/test.jpg')
+	)
+end

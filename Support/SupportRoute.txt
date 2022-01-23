@@ -1,0 +1,53 @@
+■個別設定
+get '/patients/:id', to: 'patients#show'
+get '/patients/:id', to: 'patients#show', as: 'patient'
+
+■一括設定
+以下の用のrouteを設定すると
+resources :photos
+railsデフォルトで以下の
+photosコントローラーの以下名前のメソッドに自動でRouteを定義してくれる。
+GET			：index
+POST		：new
+POST		：create
+GET			：show
+GET			：edit
+PUT/PATCH	：update
+DELETE		：destroy
+
+■高度
+①ULRでくくる
+Rails.application.routes.draw do
+	#URLレベルが1つ低いURL名でくくることができる
+	scope 'admin' do
+		resources :photos
+	end
+end
+
+②コントローラー、モジュールでくくる
+Rails.application.routes.draw do
+	#コントローラー/モジュール名でくくることができる
+	scope module: 'admin' do
+		resources :photos
+	end
+end
+
+③デフォルトの一括設定の一部を除外したり、一部だけ反映したりする
+Rails.application.routes.draw do
+	# :index, :show のルートだけ定義するよ
+	resources :users, only: [:index, :show]
+	# :destroy, :update のルートだけ定義しないよ
+	resources :photos, except: [:destroy, :update]
+end
+
+④一括設定の中で個別にルートを設定する方法だがまだよく理解していない
+Rails.application.routes.draw do
+	resources :photos do
+		member do
+	  		get 'preview'
+		end
+	end
+end
+
+■所感
+モジュールくくりと、URLくくりの使い分け方がまだわかんないね

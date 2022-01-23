@@ -1,0 +1,30 @@
+■コミットログ規則
+・ヘッダー名を付与すること
+・コミット内容を1行に
+・変更した理由や目的を書くこと
+
+○以下例
+機能開発: 〇〇なため、△△を追加
+詳細....................
+
+
+■コミットログの規則、ヘッダー名
+○日本語
+機能開発	: A new feature
+修正		: A bug fix
+資料関連	: Documentation only changes 
+性能改善	: A code change that improves performance
+テスト関連	: Adding missing or correcting existing tests
+環境構築	: Changes to the build process or auxiliary tools and libraries such as documentation generation
+
+○English
+feat: A new feature
+fix: A bug fix
+docs: Documentation only changes 
+refactor: A code change that neither fixes a bug nor adds a feature
+perf: A code change that improves performance
+test: Adding missing or correcting existing tests
+chore: Changes to the build process or auxiliary tools and libraries such as documentation generation
+
+■参考サイト
+https://qiita.com/konatsu_p/items/dfe199ebe3a7d2010b3e

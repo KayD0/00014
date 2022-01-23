@@ -1,0 +1,95 @@
+■ファイル名名規則
+Table作成
+：Create[Tables]
+カラム、関連追加
+：AddColmuns[Tables]
+カラム、関連削除
+：DeleteColmuns[Tables]
+カラム、関連変更
+：ChangeColmuns[Tables]
+
+
+■Migrationファイルを作成する
+rails g migration [filename]
+
+■Migrationを実行する
+rails db:migrate
+
+■ひとつ前のバージョンに戻す
+rails db:rollback
+#戻るバージョン指定も可能
+rails db:rollback STEP=5
+
+■migration ステータス確認
+rails db:migrate:status
+
+■削除系
+rails g migration DropBooks
+
+■テストデータを導入する
+
+
+■Migration fileの編集
+以下サイトを参考
+https://railsdoc.com/migration
+https://qiita.com/matsubishi5/items/20aac3234640f6e6cec9
+
+class CreateProducts < ActiveRecord::Migration[5.2]
+ 	def change
+		# Tableの作成（基本）
+		create_table :Products do |t|
+			#t.型の名前 :カラムの名前
+			t.string 		:name,index{ unique: true }
+			t.text			:description,null: false,limit:80
+			t.integer		:price
+			t.timestamps
+		end
+		
+		#主キーを指定して作成
+		create_table(:objects, primary_key: 'guid') do |t|
+			t.column :name, :string, limit: 80
+		end
+		
+		# Tableを文字コード指定して作成
+		create_table :Products, options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8' do |t|
+			#t.型の名前 :カラムの名前
+			t.string 		:name,index{ unique: true }
+			t.text			:description,null: false,limit:80
+			t.integer		:price
+			t.timestamps
+		end
+		
+		#Tableを主キーを指定しないで作成
+		create_table(:categories_suppliers, id: false) do |t|
+			t.column :category_id, :integer
+			t.column :supplier_id, :integer
+		end
+		
+		# カラムの追加
+		add_column :moderators, :username, :string
+		
+		# Optionの追加
+		add_index :moderators, :username, unique: true
+		
+	end
+end
+
+※以下指定できる型一覧
+string		: 文字列
+text		: 長い文字列
+integer		: 整数
+float		: 浮動小数
+decimal		: 精度の高い小数
+datetime	: 日時
+timestamp 	: タイムスタンプ
+time 		: 時間
+date 		: 日付
+binary 		: バイナリデータ
+boolean 	: Boolean
+
+※よく使いそうなOptionに関して
+unique: true	一意誓約
+null: false		null可否
+limit:80		桁数の制限
+precision:6		整数部の精度
+scale:6			少数部の制度
