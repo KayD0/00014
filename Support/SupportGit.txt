@@ -7,15 +7,14 @@
 機能開発: 〇〇なため、△△を追加
 詳細....................
 
-
 ■コミットログの規則、ヘッダー名
 ○日本語
-機能開発	: A new feature
-修正		: A bug fix
-資料関連	: Documentation only changes 
-性能改善	: A code change that improves performance
-テスト関連	: Adding missing or correcting existing tests
-環境構築	: Changes to the build process or auxiliary tools and libraries such as documentation generation
+機能開発	: 新機器の言う開発に使うヘッダ
+修正		: 開発済、リリース済みの機能、システムのバグを修正する時に使うヘッダ
+資料関連	: 資料の修正とかに使うヘッダ
+性能改善	: 既存の機能、システムの性能を改善するためのヘッダ
+テスト関連	: テストコードの修正等に使うヘッダ
+環境構築	: 開発環境の構築中に利用するヘッダ
 
 ○English
 feat: A new feature
