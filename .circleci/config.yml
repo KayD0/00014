@@ -12,8 +12,11 @@ jobs:
     working_directory: ~/myapp
     steps:
       - checkout:
-          path: ~/myapp/api
-      - ruby/install-deps
+          path: ~/myapp
+      #- ruby/install-deps
+      - run:
+          name: 実験
+          command: ls
 
   test:
     docker:
@@ -65,9 +68,9 @@ workflows:
   build_test_and_deploy:
     jobs:
       - build
-      - test:
-          requires:
-            - build
+      #- test:
+      #    requires:
+      #      - build
       #- deploy:
       #    requires:
       #      - test
