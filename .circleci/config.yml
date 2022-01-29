@@ -9,10 +9,10 @@ jobs:
   build:
     docker:
       - image: circleci/ruby:3.0.2
-    working_directory: ~/myapp/api
+    working_directory: ~/myapp
     steps:
       - checkout:
-          path: ~/myapp
+          path: ~/myapp/api
       #- ruby/install-deps
       - run:
           name: 実験1
