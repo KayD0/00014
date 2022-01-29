@@ -15,7 +15,10 @@ jobs:
           path: ~/myapp
       #- ruby/install-deps
       - run:
-          name: 実験
+          name: 実験1
+          command: cd api
+      - run:
+          name: 実験2
           command: ls
 
   test:
