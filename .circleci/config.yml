@@ -35,9 +35,9 @@ jobs:
       - run:
           name: Database setup
           command: bundle exec rails db:migrate
-      #- run:
-      #    name: test
-      #    command: bundle exec rake test
+      - run:
+          name: test
+          command: bundle exec rake test
     
   #deploy:
   #  docker:
@@ -65,9 +65,9 @@ workflows:
   build_test_and_deploy:
     jobs:
       - build
-      #- test:
-      #    requires:
-      #      - build
+      - test:
+          requires:
+            - build
       #- deploy:
       #    requires:
       #      - test
