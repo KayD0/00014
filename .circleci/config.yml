@@ -12,7 +12,7 @@ jobs:
     working_directory: ~/myapp
     steps:
       - checkout:
-          path: ~/myapp
+          path: ~/myapp/api
       - ruby/install-deps
 
   test:
@@ -30,7 +30,7 @@ jobs:
     working_directory: ~/myapp
     steps:
       - checkout:
-          path: ~/myapp
+          path: ~/myapp/api
       - ruby/install-deps
       - run:
           name: Database setup
