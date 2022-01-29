@@ -9,15 +9,12 @@ jobs:
   build:
     docker:
       - image: circleci/ruby:3.0.2
-    working_directory: ~/myapp
+    working_directory: ~/myapp/api
     steps:
       - checkout:
-          path: ~/myapp/api
-      #- ruby/install-deps
-      - run:
-          name: 実験1
-          command: ls
-
+          path: ~/myapp
+      - ruby/install-deps
+      
   test:
     docker:
       - image: circleci/ruby:3.0.2
@@ -30,10 +27,10 @@ jobs:
       BUNDLE_RETRY: "3"
       APP_DATABASE_HOST: "127.0.0.1"
       RAILS_ENV: test
-    working_directory: ~/myapp
+    working_directory: ~/myapp/api
     steps:
       - checkout:
-          path: ~/myapp/api
+          path: ~/myapp
       - ruby/install-deps
       - run:
           name: Database setup
