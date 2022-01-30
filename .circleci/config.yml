@@ -51,6 +51,9 @@ jobs:
           name: heroku login -i
           command: heroku container:login
       - run:
+          name: 実験
+          command: ls
+      - run:
           name: push docker image
           command: heroku container:push web -a $HEROKU_APP_NAME
       - run:
