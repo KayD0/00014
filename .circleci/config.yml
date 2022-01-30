@@ -48,7 +48,7 @@ jobs:
           version: 20.10.6
       - heroku/install
       - run:
-          name: heroku login
+          name: heroku login -i
           command: heroku container:login
       - run:
           name: push docker image
