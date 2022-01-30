@@ -4,6 +4,7 @@ version: 2.1
 orbs:
   ruby: circleci/ruby@1.1.2
   heroku: circleci/heroku@1.2.6
+  node: circleci/node@4.7.0
 
 jobs:
   build_api:
@@ -14,7 +15,23 @@ jobs:
       - checkout:
           path: ~/myapp
       - ruby/install-deps
-      
+  
+  build_front:
+    docker:
+      - image: cimg/node:17.2.0
+      working_directory: ~/myapp/front
+      steps:
+        - checkout :
+            path: ~/myapp
+        - node/install-packages:
+            pkg-manager: yarn
+        - run:
+            command: yarn test
+            name: Run tests
+        - run:
+            command: yarn build
+            name: Build app
+
   test_api:
     docker:
       - image: circleci/ruby:3.0.2
