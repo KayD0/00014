@@ -44,7 +44,7 @@ jobs:
       - image: circleci/ruby:3.0.2
     working_directory: ~/myapp/api
     steps:
-      - checkout
+      - checkout:
           path: ~/myapp
       - setup_remote_docker:
           version: 20.10.6
