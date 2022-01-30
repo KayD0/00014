@@ -42,7 +42,7 @@ jobs:
   deploy:
     docker:
       - image: circleci/ruby:3.0.2
-    working_directory: ~/myapp
+    working_directory: ~/myapp/api
     steps:
       - checkout:
           path: ~/myapp
