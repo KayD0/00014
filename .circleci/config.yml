@@ -42,6 +42,7 @@ jobs:
   deploy:
     docker:
       - image: circleci/ruby:3.0.2
+    working_directory: ~/api
     steps:
       - checkout
       - setup_remote_docker:
