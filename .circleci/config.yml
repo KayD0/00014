@@ -19,18 +19,18 @@ jobs:
   build_front:
     docker:
       - image: cimg/node:17.2.0
-      working_directory: ~/myapp/front
-      steps:
-        - checkout :
-            path: ~/myapp
-        - node/install-packages:
-            pkg-manager: yarn
-        - run:
-            command: yarn test
-            name: Run tests
-        - run:
-            command: yarn build
-            name: Build app
+    working_directory: ~/myapp/front
+    steps:
+      - checkout :
+          path: ~/myapp
+      - node/install-packages:
+          pkg-manager: yarn
+      - run:
+          command: yarn test
+          name: Run tests
+      - run:
+          command: yarn build
+          name: Build app
 
   test_api:
     docker:
