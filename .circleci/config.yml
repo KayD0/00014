@@ -91,9 +91,9 @@ workflows:
           requires:
             - build_api
       #- build_front
-      #- deploy:
-      #    requires:
-      #      - test
-      #    filters:
-      #      branches:
-      #        only: master
+      - deploy:
+          requires:
+            - test_api
+          filters:
+            branches:
+              only: master
