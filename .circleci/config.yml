@@ -90,7 +90,7 @@ workflows:
       - test_api:
           requires:
             - build_api
-      - build_front
+      #- build_front
       #- deploy:
       #    requires:
       #      - test
