@@ -80,6 +80,7 @@ jobs:
           command: heroku container:release api -a $HEROKU_APP_NAME
       - run:
           name: database setup
+          no_output_timeout: 20m
           command: heroku run bundle exec rake db:migrate RAILS_ENV=production -a $HEROKU_APP_NAME
 
 workflows:
